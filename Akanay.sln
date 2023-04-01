@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akanay.Repository", "Akanay
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akanay.Service", "Akanay.Service\Akanay.Service.csproj", "{A83C9149-0177-4A26-8BB0-58D8908B35CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akanay.Entities", "Entities\Akanay.Entities.csproj", "{F87986EA-F8D9-43E0-8231-3DFB3DF96B1F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{A83C9149-0177-4A26-8BB0-58D8908B35CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A83C9149-0177-4A26-8BB0-58D8908B35CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83C9149-0177-4A26-8BB0-58D8908B35CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F87986EA-F8D9-43E0-8231-3DFB3DF96B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F87986EA-F8D9-43E0-8231-3DFB3DF96B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F87986EA-F8D9-43E0-8231-3DFB3DF96B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F87986EA-F8D9-43E0-8231-3DFB3DF96B1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
