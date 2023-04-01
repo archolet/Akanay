@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akanay.Repository", "Akanay
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akanay.Service", "Akanay.Service\Akanay.Service.csproj", "{A83C9149-0177-4A26-8BB0-58D8908B35CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akanay.Entities", "Akanay.Entities\Akanay.Entities.csproj", "{A0206D54-5E24-4247-ABCB-60AADEC7FEA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akanay.API", "Akanay.API\Akanay.API.csproj", "{B6A69AF2-B45C-40E2-BDD3-0F2DA94C04ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{A83C9149-0177-4A26-8BB0-58D8908B35CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A83C9149-0177-4A26-8BB0-58D8908B35CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83C9149-0177-4A26-8BB0-58D8908B35CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0206D54-5E24-4247-ABCB-60AADEC7FEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0206D54-5E24-4247-ABCB-60AADEC7FEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0206D54-5E24-4247-ABCB-60AADEC7FEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0206D54-5E24-4247-ABCB-60AADEC7FEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A69AF2-B45C-40E2-BDD3-0F2DA94C04ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A69AF2-B45C-40E2-BDD3-0F2DA94C04ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A69AF2-B45C-40E2-BDD3-0F2DA94C04ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A69AF2-B45C-40E2-BDD3-0F2DA94C04ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
