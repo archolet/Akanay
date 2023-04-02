@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Akanay.Entities\Akanay.Entities.csproj" />
+    <ProjectReference Include="..\Akanay.Repository\Akanay.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
