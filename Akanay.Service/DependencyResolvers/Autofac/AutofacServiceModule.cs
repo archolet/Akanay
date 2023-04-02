@@ -12,6 +12,9 @@ namespace Akanay.Service.DependencyResolvers.Autofac
         {
             builder.RegisterType<ProductService>().As<IProductService>();
             builder.RegisterType<EfProductRepository>().As<IProductRepository>();
+
+            builder.RegisterType<CategoryService>().As<ICategoryService>();
+            builder.RegisterType<EfCategoryRepository>().As<ICategoryRepository>();
         }
 
     }

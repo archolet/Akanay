@@ -9,6 +9,7 @@ namespace Akanay.Service.Statics
     public static class Messages
     {
         public static string ProductDeleted = "Ürün silindi";
+        public static string CategoryDeleted = "Kategori silindi";
 
 
     }

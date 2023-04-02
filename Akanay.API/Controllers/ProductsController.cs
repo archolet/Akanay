@@ -1,6 +1,5 @@
 ﻿using Akanay.Entities.Models;
 using Akanay.Service.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Akanay.API.Controllers
@@ -66,11 +65,5 @@ namespace Akanay.API.Controllers
                 return Ok(result.Data);
             return BadRequest(result.Message);
         }
-
-
-
-
     }
-
-
 }
