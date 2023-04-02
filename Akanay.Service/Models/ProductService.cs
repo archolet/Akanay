@@ -25,7 +25,7 @@ namespace Akanay.Service.Models
 
         public IDataResult<Product> GetById(int id)
         {
-            return new SuccessDataResult<Product>(_productRepository.Get(p => p.Id == id));
+            return new SuccessDataResult<Product>(_productRepository.Get(p => p.ProductID == id));
         }
 
         public IDataResult<List<Product>> GetAll()
