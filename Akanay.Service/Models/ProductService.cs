@@ -3,6 +3,7 @@ using Akanay.Core.Utilities.Results.Models;
 using Akanay.Entities.Models;
 using Akanay.Repository.Interfaces;
 using Akanay.Service.Interfaces;
+using Akanay.Service.Statics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace Akanay.Service.Models
         public IResult Delete(Product product)
         {
             _productRepository.Delete(product);
-            return new SuccessResult("Silindi");
+            return new SuccessResult(Messages.ProductDeleted);
         }
         public IDataResult<Product> Update(Product product)
         {
