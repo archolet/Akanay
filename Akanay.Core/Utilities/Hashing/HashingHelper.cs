@@ -20,7 +20,11 @@ namespace Akanay.Core.Utilities.Hashing
 
         public static bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
+<<<<<<< HEAD
+            using(var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+=======
             using(var hmac = new System.Security.Cryptography.HMACSHA512())
+>>>>>>> d1e71ae5530256531d2e3672820f5c226d710df2
             {
                 var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
                 for (int i = 0; i < computedHash.Length; i++)

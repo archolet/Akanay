@@ -1,11 +1,14 @@
-﻿using Akanay.Core.Utilities.Results.Interfaces;
+﻿using Akanay.Core.Aspects.Autofac.Validation;
+using Akanay.Core.Utilities.Results.Interfaces;
 using Akanay.Core.Utilities.Results.Models;
 using Akanay.Entities.Models;
 using Akanay.Repository.Interfaces;
 using Akanay.Service.Interfaces;
 using Akanay.Service.Statics;
+using Akanay.Service.ValidationRules.FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +42,7 @@ namespace Akanay.Service.Models
         }
 
 
+        [ValidationAspect(typeof(ProductValidator),Priority =1) ]
         public IDataResult<Product> Add(Product product)
         {
             return new SuccessDataResult<Product>(_productRepository.Add(product));

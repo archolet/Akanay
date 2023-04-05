@@ -1,5 +1,6 @@
 ﻿using Akanay.Entities.Models;
 using Akanay.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Akanay.API.Controllers
@@ -15,6 +16,7 @@ namespace Akanay.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="Product.List")]
         public IActionResult GetAll()
         {
             var result = _productService.GetAll();
