@@ -67,25 +67,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowOrigin",builder => builder.WithOrigins("http://localhost:5145"));
-});
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-{
-    var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidIssuer = tokenOptions.Issuer,
-        ValidAudiences = tokenOptions.Audience.Split(","),
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
-    };
-});
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder =>{ builder.RegisterModule(new AutofacServiceModule()); });
