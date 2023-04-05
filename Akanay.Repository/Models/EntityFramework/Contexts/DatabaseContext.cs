@@ -1,4 +1,5 @@
-﻿using Akanay.Entities.Models;
+﻿using Akanay.Core.Entities.Models.CustomUser;
+using Akanay.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Akanay.Repository.Models.EntityFramework.Contexts
@@ -12,6 +13,19 @@ namespace Akanay.Repository.Models.EntityFramework.Contexts
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set;}
+
+   
+        
+        
+        
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<User> Users { get; set; }
+
+
+
+
+
 
 
     }

@@ -16,12 +16,13 @@ namespace Akanay.Service.Models
     public class CategoryService : ICategoryService
     {
         private ICategoryRepository _categoryRepository;
+        private IProductRepository _productRepository;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(ICategoryRepository categoryRepository, IProductRepository productRepository)
         {
             _categoryRepository = categoryRepository;
+            _productRepository = productRepository;
         }
-
         public IDataResult<Category> Add(Category category)
         {
             return new SuccessDataResult<Category>(_categoryRepository.Add(category));
@@ -29,6 +30,12 @@ namespace Akanay.Service.Models
 
         public IResult Delete(Category category)
         {
+            foreach (var item in _productRepository.GetAll(p => p.CategoryId == category.CategoryId))
+            {
+                _productRepository.Delete(item);
+                 new SuccessResult(Messages.ProductDeleted);
+            }
+
             _categoryRepository.Delete(category);
             return new SuccessResult(Messages.CategoryDeleted);
         }
