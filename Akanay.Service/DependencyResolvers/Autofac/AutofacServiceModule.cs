@@ -1,4 +1,5 @@
-﻿using Akanay.Repository.Interfaces;
+﻿using Akanay.Core.Utilities.Security.Jwt;
+using Akanay.Repository.Interfaces;
 using Akanay.Repository.Interfaces.CustomUser;
 using Akanay.Repository.Models.EntityFramework;
 using Akanay.Repository.Models.EntityFramework.CustomUser;
@@ -23,6 +24,11 @@ namespace Akanay.Service.DependencyResolvers.Autofac
 
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<EfUserRepository>().As<IUserRepository>();
+
+            builder.RegisterType<AuthService>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+
         }
 
     }

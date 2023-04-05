@@ -55,7 +55,7 @@ namespace Akanay.Core.Utilities.Security.Jwt
             var claims = new List<Claim>();
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
-            claims.AddName($"{user.FirsName} {user.LastName}");
+            claims.AddName($"{user.FirstName} {user.LastName}");
             claims.AddRoles(operationClaims.Select(x => x.Name).ToArray());
             return claims;
         }
