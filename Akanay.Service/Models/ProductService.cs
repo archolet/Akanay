@@ -1,4 +1,6 @@
-﻿using Akanay.Core.Aspects.Autofac.Validation;
+﻿using Akanay.Core.Aspects.Autofac.Caching;
+using Akanay.Core.Aspects.Autofac.Transaction;
+using Akanay.Core.Aspects.Autofac.Validation;
 using Akanay.Core.Utilities.Results.Interfaces;
 using Akanay.Core.Utilities.Results.Models;
 using Akanay.Entities.Models;
@@ -36,6 +38,7 @@ namespace Akanay.Service.Models
             return new SuccessDataResult<List<Product>>(_productRepository.GetAll().ToList());
         }
 
+        [CacheAspect(duration:10)]
         public IDataResult<List<Product>> GetListByCategory(int categoryId)
         {
             return new SuccessDataResult<List<Product>>(_productRepository.GetAll(p => p.CategoryId == categoryId).ToList());
@@ -43,6 +46,7 @@ namespace Akanay.Service.Models
 
 
         [ValidationAspect(typeof(ProductValidator),Priority =1) ]
+        [CacheRemoveAspect("IProductService.Get")]
         public IDataResult<Product> Add(Product product)
         {
             return new SuccessDataResult<Product>(_productRepository.Add(product));
@@ -56,6 +60,14 @@ namespace Akanay.Service.Models
         public IDataResult<Product> Update(Product product)
         {
             return new SuccessDataResult<Product>(_productRepository.Update(product));
+        }
+
+        [TransactionScopeAspect]
+        public IResult TransactionalOperation(Product product)
+        {
+           _productRepository.Update(product);
+            //_productRepository.Add(product);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }

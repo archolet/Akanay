@@ -17,5 +17,6 @@ namespace Akanay.Service.Statics
         public static string UserAlreadyExists = "Kullanıcı mevcut";
         public static string UserRegistered = "Kullanıcı kayıt edildi";
 
+        public static string ProductUpdated ="güncellendi";
     }
 }

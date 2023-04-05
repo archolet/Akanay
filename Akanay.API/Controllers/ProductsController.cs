@@ -67,5 +67,20 @@ namespace Akanay.API.Controllers
                 return Ok(result.Data);
             return BadRequest(result.Message);
         }
+
+
+        [HttpPost("transaction")]
+        public IActionResult TransactionTest(Product product)
+        {
+            var result = _productService.TransactionalOperation(product);
+            if (result.IsSuccess)
+                return Ok(result.Message);
+            return BadRequest(result.Message);
+        }
+
+
+
+
+
     }
 }

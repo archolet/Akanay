@@ -1,3 +1,6 @@
+using Akanay.Core.DependencyResolvers;
+using Akanay.Core.Extensions;
+using Akanay.Core.Utilities.IoC;
 using Akanay.Core.Utilities.Security.Encyption;
 using Akanay.Core.Utilities.Security.Jwt;
 using Akanay.Service.DependencyResolvers.Autofac;
@@ -68,6 +71,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 
 
+builder.Services.AddDependencyResolvers(new ICoreModule[]
+{
+    new CoreModule(),
+}) ;
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder =>{ builder.RegisterModule(new AutofacServiceModule()); });

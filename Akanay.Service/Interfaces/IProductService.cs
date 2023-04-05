@@ -16,5 +16,8 @@ namespace Akanay.Service.Interfaces
         IDataResult<Product> Add(Product product);
         IDataResult<Product> Update(Product product);
         IResult Delete(Product product);
+
+        IResult TransactionalOperation(Product product);
+
     }
 }
