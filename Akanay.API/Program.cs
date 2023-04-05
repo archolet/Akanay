@@ -5,12 +5,9 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-<<<<<<< HEAD
+
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
-=======
->>>>>>> d1e71ae5530256531d2e3672820f5c226d710df2
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -113,11 +110,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-<<<<<<< HEAD
 app.UseCors(builder =>builder.WithOrigins("http://localhost:7040").AllowAnyHeader());
-=======
-app.UseCors(builder =>builder.WithOrigins("http://localhost:5145").AllowAnyHeader());
->>>>>>> d1e71ae5530256531d2e3672820f5c226d710df2
+
 app.UseHttpsRedirection();
 
 

@@ -1,9 +1,7 @@
-<<<<<<< HEAD
+
 ﻿using Akanay.Core.Utilities.Interceptors;
 using Akanay.Core.Utilities.Security.Jwt;
-=======
-﻿using Akanay.Core.Utilities.Security.Jwt;
->>>>>>> d1e71ae5530256531d2e3672820f5c226d710df2
+
 using Akanay.Repository.Interfaces;
 using Akanay.Repository.Interfaces.CustomUser;
 using Akanay.Repository.Models.EntityFramework;
@@ -35,7 +33,7 @@ namespace Akanay.Service.DependencyResolvers.Autofac
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
 
-<<<<<<< HEAD
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
@@ -45,8 +43,6 @@ namespace Akanay.Service.DependencyResolvers.Autofac
                 }).SingleInstance();
 
 
-=======
->>>>>>> d1e71ae5530256531d2e3672820f5c226d710df2
         }
 
     }
