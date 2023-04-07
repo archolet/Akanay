@@ -12,12 +12,6 @@ using Akanay.Service.Interfaces;
 using Akanay.Service.ServiceAspects.Autofac;
 using Akanay.Service.Statics;
 using Akanay.Service.ValidationRules.FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Akanay.Service.Models
 {
@@ -45,9 +39,10 @@ namespace Akanay.Service.Models
             return new SuccessDataResult<List<Product>>(_productRepository.GetAll().ToList());
         }
 
-        //[SecureOperation("Product.List,Admin")]
+        [SecureOperation("Product.List,Admin")]
         [CacheAspect(duration:10)]
         [LogAspect(typeof(FileLogger))]
+        [LogAspect(typeof(DatabaseLogger))]
         public IDataResult<List<Product>> GetListByCategory(int categoryId)
         {
             return new SuccessDataResult<List<Product>>(_productRepository.GetAll(p => p.CategoryId == categoryId).ToList());
