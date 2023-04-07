@@ -1,12 +1,7 @@
 ﻿using Akanay.Core.Utilities.IoC;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Akanay.Core.CrossCuttingConcerns.Caching.Microsoft
 {
@@ -14,11 +9,15 @@ namespace Akanay.Core.CrossCuttingConcerns.Caching.Microsoft
     {
         private IMemoryCache _memoryCache;
         public MemoryCacheManager() {
-          _memoryCache =  ServiceTool.ServiceProvider.GetService<IMemoryCache>();
+            _memoryCache = ServiceTool.ServiceProvider.GetService<IMemoryCache>();
         }
+
+        public object MemoryCacheExtensions { get; private set; }
+
         public void Add(string key, object data, int duration)
         {
             _memoryCache.Set(key, data, TimeSpan.FromMinutes(duration));
+
         }
 
         public T Get<T>(string key)
@@ -44,13 +43,13 @@ namespace Akanay.Core.CrossCuttingConcerns.Caching.Microsoft
         public void RemoveByPattern(string pattern)
         {
 
-
             var cacheEntriesCollectionDefinition = typeof(MemoryCache).GetProperty("EntriesCollection", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             var cacheEntriesCollection = cacheEntriesCollectionDefinition.GetValue(_memoryCache) as dynamic;
             List<ICacheEntry> cacheCollectionValues = new List<ICacheEntry>();
 
             foreach (var cacheItem in cacheEntriesCollection)
             {
+
                 ICacheEntry cacheItemValue = cacheItem.GetType().GetProperty("Value").GetValue(cacheItem, null);
                 cacheCollectionValues.Add(cacheItemValue);
             }
@@ -59,11 +58,10 @@ namespace Akanay.Core.CrossCuttingConcerns.Caching.Microsoft
             var keysToRemove = cacheCollectionValues.Where(d => regex.IsMatch(d.Key.ToString())).Select(d => d.Key).ToList();
 
             foreach (var keyToRemove in keysToRemove)
-            { 
+            {
                 _memoryCache.Remove(keyToRemove);
             }
+
         }
-
-
     }
 }

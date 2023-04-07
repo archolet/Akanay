@@ -1,22 +1,20 @@
 ﻿using Akanay.Core.CrossCuttingConcerns.Caching;
 using Akanay.Core.CrossCuttingConcerns.Caching.Microsoft;
 using Akanay.Core.Utilities.IoC;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Akanay.Core.DependencyResolvers
 {
     public class CoreModule : ICoreModule
     {
-        public void Load(IServiceCollection serviceCollection)
+        public void Load(IServiceCollection services)
         {
-           serviceCollection.AddMemoryCache();
-            serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
+            services.AddMemoryCache();
+            services.AddSingleton<ICacheManager, MemoryCacheManager>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<Stopwatch>();
         }
     }
 }

@@ -18,5 +18,7 @@ namespace Akanay.Service.Statics
         public static string UserRegistered = "Kullanıcı kayıt edildi";
 
         public static string ProductUpdated ="güncellendi";
+
+        public static string AuthorizationDenied = "Yetki Yok";
     }
 }

@@ -3,11 +3,6 @@ using Akanay.Core.Utilities.Interceptors.Autofac;
 using Akanay.Core.Utilities.IoC;
 using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Akanay.Core.Aspects.Autofac.Caching
 {

@@ -1,4 +1,5 @@
 ﻿using Akanay.Core.Aspects.Autofac.Caching;
+using Akanay.Core.Aspects.Autofac.Performance;
 using Akanay.Core.Aspects.Autofac.Transaction;
 using Akanay.Core.Aspects.Autofac.Validation;
 using Akanay.Core.Utilities.Results.Interfaces;
@@ -6,6 +7,7 @@ using Akanay.Core.Utilities.Results.Models;
 using Akanay.Entities.Models;
 using Akanay.Repository.Interfaces;
 using Akanay.Service.Interfaces;
+using Akanay.Service.ServiceAspects.Autofac;
 using Akanay.Service.Statics;
 using Akanay.Service.ValidationRules.FluentValidation;
 using System;
@@ -33,11 +35,14 @@ namespace Akanay.Service.Models
             return new SuccessDataResult<Product>(_productRepository.Get(p => p.ProductID == id));
         }
 
+        [PerformanceAspect(2)]
         public IDataResult<List<Product>> GetAll()
         {
+            Thread.Sleep(5000);
             return new SuccessDataResult<List<Product>>(_productRepository.GetAll().ToList());
         }
 
+        [SecureOperation("Product.List,Admin")]
         [CacheAspect(duration:10)]
         public IDataResult<List<Product>> GetListByCategory(int categoryId)
         {

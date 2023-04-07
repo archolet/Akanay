@@ -9,16 +9,19 @@ namespace Akanay.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        IProductService _productService;
+        private  IProductService _productService;
+
+
         public ProductsController(IProductService productService)
         {
             _productService = productService;
         }
 
         [HttpGet]
-        [Authorize(Roles ="Product.List")]
+        //[Authorize(Roles ="Product.List")]
         public IActionResult GetAll()
         {
+            
             var result = _productService.GetAll();
             if(result.IsSuccess )
                 return Ok(result.Data);

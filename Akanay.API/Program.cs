@@ -73,8 +73,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddDependencyResolvers(new ICoreModule[]
 {
-    new CoreModule(),
-}) ;
+    new CoreModule()
+});
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder =>{ builder.RegisterModule(new AutofacServiceModule()); });
