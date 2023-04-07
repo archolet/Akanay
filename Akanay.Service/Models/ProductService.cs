@@ -1,7 +1,9 @@
 ﻿using Akanay.Core.Aspects.Autofac.Caching;
+using Akanay.Core.Aspects.Autofac.Logging;
 using Akanay.Core.Aspects.Autofac.Performance;
 using Akanay.Core.Aspects.Autofac.Transaction;
 using Akanay.Core.Aspects.Autofac.Validation;
+using Akanay.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Akanay.Core.Utilities.Results.Interfaces;
 using Akanay.Core.Utilities.Results.Models;
 using Akanay.Entities.Models;
@@ -30,6 +32,7 @@ namespace Akanay.Service.Models
         }
 
 
+        [LogAspect(typeof(FileLogger))]
         public IDataResult<Product> GetById(int id)
         {
             return new SuccessDataResult<Product>(_productRepository.Get(p => p.ProductID == id));
@@ -42,8 +45,9 @@ namespace Akanay.Service.Models
             return new SuccessDataResult<List<Product>>(_productRepository.GetAll().ToList());
         }
 
-        [SecureOperation("Product.List,Admin")]
+        //[SecureOperation("Product.List,Admin")]
         [CacheAspect(duration:10)]
+        [LogAspect(typeof(FileLogger))]
         public IDataResult<List<Product>> GetListByCategory(int categoryId)
         {
             return new SuccessDataResult<List<Product>>(_productRepository.GetAll(p => p.CategoryId == categoryId).ToList());
