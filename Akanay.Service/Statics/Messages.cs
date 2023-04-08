@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Akanay.Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -20,5 +21,7 @@ namespace Akanay.Service.Statics
         public static string ProductUpdated ="güncellendi";
 
         public static string AuthorizationDenied = "Yetki Yok";
+
+        public static string ProductNameAlreadyExists = "aynı adda ürün var";
     }
 }

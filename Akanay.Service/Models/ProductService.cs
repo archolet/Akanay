@@ -1,9 +1,11 @@
 ﻿using Akanay.Core.Aspects.Autofac.Caching;
+using Akanay.Core.Aspects.Autofac.Exception;
 using Akanay.Core.Aspects.Autofac.Logging;
 using Akanay.Core.Aspects.Autofac.Performance;
 using Akanay.Core.Aspects.Autofac.Transaction;
 using Akanay.Core.Aspects.Autofac.Validation;
 using Akanay.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
+using Akanay.Core.Utilities.Business;
 using Akanay.Core.Utilities.Results.Interfaces;
 using Akanay.Core.Utilities.Results.Models;
 using Akanay.Entities.Models;
@@ -50,10 +52,26 @@ namespace Akanay.Service.Models
 
 
         [ValidationAspect(typeof(ProductValidator),Priority =1) ]
-        [CacheRemoveAspect("IProductService.Get")]
+        //[CacheRemoveAspect("IProductService.Get")]
         public IDataResult<Product> Add(Product product)
         {
+            IDataResult<Product> result = BusinessRules.Run(CheckIfProductNameExists(product.ProductName));
+            if (result != null)
+            {
+                return result;
+            }
             return new SuccessDataResult<Product>(_productRepository.Add(product));
+        }
+
+        private IDataResult<Product> CheckIfProductNameExists(string productName)
+        {
+            var result = _productRepository.GetAll(p => p.ProductName == productName).Any();
+            if (result)
+            {
+                return new ErrorDataResult<Product>(Messages.ProductNameAlreadyExists);
+            }
+            return new SuccessDataResult<Product>();
+           
         }
 
         public IResult Delete(Product product)

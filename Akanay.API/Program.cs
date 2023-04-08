@@ -99,6 +99,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.ConfigureCustomExceptionMiddleware();
+
 app.UseCors(builder =>builder.WithOrigins("http://localhost:7040").AllowAnyHeader());
 
 app.UseHttpsRedirection();
